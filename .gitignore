@@ -223,3 +223,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Data besar jangan di commit; hanya sampel kecil di data/sample/
+data/*
+!data/sample/
