@@ -1,0 +1,5 @@
+order_id,order_date,customer_name,amount,city
+1001,2024-03-05,Budi Santoso,1500000.0,Jakarta
+1002,2024-03-06,siti rahayu,250000.5,
+1003,2024-03-07,Andi,,Bandung
+1004,,Rina,10000.0,Surabaya
