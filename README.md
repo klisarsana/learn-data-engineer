@@ -141,10 +141,10 @@ Bangun aplikasi command-line yang membaca file CSV berantakan lalu membersihkann
 - Menulis log proses (berapa baris dibuang, diperbaiki)
 
 **Definition of Done:**
-- [ ] Repo punya README dengan cara pakai
-- [ ] Minimal 5 unit test dengan `pytest`
-- [ ] Commit history rapi (bukan satu commit raksasa)
-- [ ] Kode lolos linter (`ruff` atau `flake8`)
+- [x] Repo punya README dengan cara pakai
+- [x] Minimal 5 unit test dengan `pytest`
+- [x] Commit history rapi (bukan satu commit raksasa)
+- [x] Kode lolos linter (`ruff` atau `flake8`)
 
 ---
 
