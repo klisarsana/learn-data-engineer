@@ -21,9 +21,9 @@ _CURRENCY = re.compile(r"(?i)rp\.?|idr|usd|[$\s]")
 
 def snake_case(name: str) -> str:
     # camelCase -> camel_case
-    name = re.sub(r"(?<=[a-z0-9])(?<=A-Z)", "_", name.strip())
+    name = re.sub(r"(?<=[a-z0-9])(?<=[A-Z])", "_", name.strip())
     name = re.sub(r"[^\w]+", "_", name)
-    return re.sub(r"_*", "_", name).strip("_").lower()
+    return re.sub(r"_+", "_", name).strip("_").lower()
 
 
 @dataclass(frozen=True)
@@ -31,7 +31,7 @@ class CleanConfig:
     date_col: tuple[str, ...] = ()
     numeric_col: tuple[str, ...] = ()
     required_col: tuple[str, ...] = ()
-    decimal: str = ","
+    decimal: str = "."
     dayfirst: bool = True
 
     def normalized(self) -> CleanConfig:
@@ -134,7 +134,7 @@ def _check_columns(df: pd.DataFrame, config: CleanConfig) -> None:
     missing = sorted(wanted - set(df.columns))
     if missing:
         raise ValueError(
-            "Kolom tidak ditemukan: {missing}. Kolom tersedia: {list(df.columns)}"
+            f"Kolom tidak ditemukan: {missing}. Kolom tersedia: {list(df.columns)}"
         )
 
 
