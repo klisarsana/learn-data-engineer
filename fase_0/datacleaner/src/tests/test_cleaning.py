@@ -39,7 +39,7 @@ def test_standardize_missing_counts_and_replace():
     assert out["a"].isna().sum() == 3
 
 
-@pytest.mark.parameterize(
+@pytest.mark.parametrize(
     "value,decimal,expected",
     [
         ("Rp 1.500.000", ",", 1_500_000.0),
