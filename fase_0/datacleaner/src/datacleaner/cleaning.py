@@ -114,7 +114,7 @@ def parse_numbers(
     df: pd.DataFrame, columns: tuple[str, ...], decimal: str
 ) -> tuple[pd.DataFrame, dict[str, int]]:
     out = df.copy()
-    failures = dict[str, int] = {}
+    failures: dict[str, int] = {}
     for col in columns:
         text = out[col].astype("string").str.replace(_CURRENCY, "", regex=True)
         if decimal == ",":
@@ -151,16 +151,16 @@ def clean(df: pd.DataFrame, config: CleanConfig) -> tuple[pd.DataFrame, Cleaning
 
     out, date_fail = parse_date(out, config.date_col, config.dayfirst)
     out, num_fail = parse_numbers(out, config.numeric_col, config.decimal)
-    report.parse_failures = {**date_fail, **num_fail}
+    report.parse_fail = {**date_fail, **num_fail}
 
     before = len(out)
     out = out.drop_duplicates()
-    report.duplicates_removed = before - len(out)
+    report.duplicates_remove = before - len(out)
 
     if config.required_col:
         before = len(out)
         out = out.dropna(subset=list(config.required_col))
-        report.rows_dropped_missing = before - len(out)
+        report.rows_missing_drop = before - len(out)
 
     out = out.reset_index(drop=True)
     report.rows_out = len(out)
