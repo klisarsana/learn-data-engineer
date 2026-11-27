@@ -21,7 +21,7 @@ _CURRENCY = re.compile(r"(?i)rp\.?|idr|usd|[$\s]")
 
 def snake_case(name: str) -> str:
     # camelCase -> camel_case
-    name = re.sub(r"(?<=[a-z0-9])(?<=[A-Z])", "_", name.strip())
+    name = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", "_", name.strip())
     name = re.sub(r"[^\w]+", "_", name)
     return re.sub(r"_+", "_", name).strip("_").lower()
 
