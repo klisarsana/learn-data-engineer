@@ -13,7 +13,9 @@ SUPPORTED_OUTPUT = {".csv", ".parquet"}
 def read_table(path: Path, sep: str = ",", encoding: str = "utf-8") -> pd.DataFrame:
     # dtype=str + keep_default_na=False: jangan biarkan pandas menebak tipe diam-diam
     # Contoh: (ID "0812" menjadi 812). Konversi tipe dilakukan eksplisit di cleaning.
-    return pd.read_csv(path, sep=sep, encoding=encoding, dtype=str, keep_date_col=False)
+    return pd.read_csv(
+        path, sep=sep, encoding=encoding, dtype=str, keep_default_na=False
+    )
 
 
 def write_table(df: pd.DataFrame, path: Path) -> None:
